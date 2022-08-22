@@ -12,7 +12,8 @@ public class newMain {
     public static void main(String[] args) {
         MyGson instance = MyGson.getInstance();
         Account account = new Account("2", "acc2", LocalDateTime.now());
-        instance.writeToFile(account, "account.json");
-        instance.readFile(Account.class);
+        String filePath = "account.json";
+        instance.writeToFile(account, filePath);
+        System.out.println(instance.readFile(Account.class, filePath));
     }
 }
