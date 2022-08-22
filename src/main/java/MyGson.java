@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  */
 public class MyGson {
     private static MyGson myInstance = null;
-    public static Gson gson;
+    private static Gson gson;
 
     private MyGson() {
         GsonBuilder builder = new GsonBuilder();
@@ -26,7 +26,7 @@ public class MyGson {
         return myInstance;
     }
 
-    public Gson getGson() {
+    private Gson getGson() {
         return gson;
     }
 
