@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.*;
 import java.time.LocalDateTime;
 
 /**
@@ -27,5 +28,27 @@ public class MyGson {
 
     public Gson getGson() {
         return gson;
+    }
+
+    public void readFile(Class<?> objectClass){
+        try {
+            FileReader fileReader = new FileReader("account.json");
+            Object o = gson.fromJson(fileReader, objectClass);
+            System.out.println(o);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void writeToFile(Object  o,String filePath){
+        try {
+            Writer writer = new FileWriter(filePath);
+            gson.toJson(o, writer);
+            // close the writer
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
